@@ -1,1 +1,1 @@
-solves of [co](https://adventofcode.com/)
+Solves of [Advent of Code](https://adventofcode.com/)
