@@ -1,4 +1,4 @@
-package org.advent2025;
+package advent2025;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class DayOne {
     static int numberOfZeroes;
 
     public static void main(String[] args) throws IOException {
-        Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("C:\\Users\\ianx3\\IdeaProjects\\advent\\src\\main\\resources\\day1input.txt");
+        Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("C:\\Users\\ianx3\\IdeaProjects\\advent\\src\\main\\resources\\2025\\day1input.txt");
         handleNumbers(path);
         System.out.println("Pointed at zero " + numberOfZeroes + " times");
         System.out.println("Crossed zero "+ crossedZero + " times");

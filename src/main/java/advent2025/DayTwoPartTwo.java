@@ -1,4 +1,4 @@
-package org.advent2025;
+package advent2025;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,10 +7,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class DayTwoPartOne {
+public class DayTwoPartTwo {
 
     public static void main(String[] args) {
-        Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("C:\\Users\\ianx3\\IdeaProjects\\advent\\src\\main\\resources\\day2input.txt");
+        Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("C:\\Users\\ianx3\\IdeaProjects\\advent\\src\\main\\resources\\2025\\day2input.txt");
         String[] providedNumbers = splitNumbersByComma(path);
         ArrayList<String> invalidIDs = new ArrayList<>();
 
@@ -22,15 +22,29 @@ public class DayTwoPartOne {
             for (long num = rangeStart; num <= rangeEnd; num++) {
                 String numberString = Long.toString(num);
                 int len = numberString.length();
-                 if (len % 2 == 0) {
-                        int mid = len / 2;
-                        String firstHalf = numberString.substring(0, mid);
-                        String secondHalf = numberString.substring(mid);
 
-                        if (firstHalf.equals(secondHalf)) {
-                            invalidIDs.add(numberString);
+                // Check all possible pattern lengths (from 1 to len/2)
+                for (int patternLen = 1; patternLen <= len / 2; patternLen++) {
+                    // Only check if the pattern can divide the string evenly
+                    if (len % patternLen == 0) {
+                        String pattern = numberString.substring(0, patternLen);
+                        boolean matches = true;
+
+                        // Check if the entire string is made of repetitions of this pattern
+                        for (int pos = patternLen; pos < len; pos += patternLen) {
+                            String chunk = numberString.substring(pos, pos + patternLen);
+                            if (!chunk.equals(pattern)) {
+                                matches = false;
+                                break;
+                            }
                         }
-                 }
+
+                        if (matches) {
+                            invalidIDs.add(numberString);
+                            break;
+                        }
+                    }
+                }
             }
         }
         long sum = 0;
