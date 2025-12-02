@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class DayTwo {
+public class DayTwoPartOne {
 
     public static void main(String[] args) {
         Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("C:\\Users\\ianx3\\IdeaProjects\\advent\\src\\main\\resources\\day2input.txt");
@@ -22,17 +22,15 @@ public class DayTwo {
             for (long num = rangeStart; num <= rangeEnd; num++) {
                 String numberString = Long.toString(num);
                 int len = numberString.length();
+                 if (len % 2 == 0) {
+                        int mid = len / 2;
+                        String firstHalf = numberString.substring(0, mid);
+                        String secondHalf = numberString.substring(mid);
 
-                // Only even-length numbers can be split into equal halves
-                if (len % 2 == 0) {
-                    int mid = len / 2;
-                    String firstHalf = numberString.substring(0, mid);
-                    String secondHalf = numberString.substring(mid);
-
-                    if (firstHalf.equals(secondHalf)) {
-                        invalidIDs.add(numberString);
-                    }
-                }
+                        if (firstHalf.equals(secondHalf)) {
+                            invalidIDs.add(numberString);
+                        }
+                 }
             }
         }
         long sum = 0;
