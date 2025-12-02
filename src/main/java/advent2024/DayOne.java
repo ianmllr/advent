@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class DayOne {
     public static void main() {
-        Path path = Path.of(("C:\\Users\\ianx3\\IdeaProjects\\advent\\src\\main\\resources\\2024\\day1input.txt"));
+        Path path = Path.of(("src/main/resources/2024/day1input.txt"));
         List<String> parsedNumbers = splitNumbers(path);
 
         List<Integer> leftNumbers = new ArrayList<>();
