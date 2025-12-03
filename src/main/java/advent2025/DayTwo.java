@@ -10,7 +10,7 @@ import java.util.Objects;
 public class DayTwo {
 
     public static void main(String[] args) {
-        Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("C:\\Users\\ianx3\\IdeaProjects\\advent\\src\\main\\resources\\2025\\day2input.txt");
+        Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("src/main/resources/2025/day2input.txt");
         String[] providedNumbers = splitNumbersByComma(path);
         ArrayList<String> invalidIDs = new ArrayList<>();
         ArrayList<String> invalidIDsPt2 = new ArrayList<>();
