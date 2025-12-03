@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class DayOne {
+public class Day1 {
 
     static int currentValue;
     static int crossedZero;
@@ -19,7 +19,7 @@ public class DayOne {
         System.out.println("Crossed zero "+ crossedZero + " times");
     }
 
-    public static void handleNumbers(Path path) throws IOException {
+    private static void handleNumbers(Path path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             currentValue = 50;

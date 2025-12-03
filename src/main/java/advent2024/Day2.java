@@ -6,10 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class DayTwo {
+public class Day2 {
     public static void main() {
-
-
         Path path = Path.of(("src/main/resources/2024/day2input.txt"));
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
@@ -45,7 +43,7 @@ public class DayTwo {
             }
             System.out.println(safeReports.size());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
 

@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class DayOne {
+public class Day1 {
     public static void main() {
         Path path = Path.of(("src/main/resources/2024/day1input.txt"));
         List<String> parsedNumbers = splitNumbers(path);
@@ -45,7 +45,7 @@ public class DayOne {
         System.out.println(similarityScore);
     }
 
-    public static List<String> splitNumbers(Path path) {
+    private static List<String> splitNumbers(Path path) {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             List<String> allNumbers = new ArrayList<>();
@@ -56,7 +56,7 @@ public class DayOne {
             }
             return allNumbers;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return null;
         }
     }

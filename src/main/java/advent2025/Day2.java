@@ -3,14 +3,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class DayTwo {
-
-    public static void main(String[] args) {
-        Path path = args.length > 0 ? Paths.get(args[0]) : Paths.get("src/main/resources/2025/day2input.txt");
+public class Day2 {
+    public static void main() {
+        Path path = Path.of(("src/main/resources/2025/day2input.txt"));
         String[] providedNumbers = splitNumbersByComma(path);
         ArrayList<String> invalidIDs = new ArrayList<>();
         ArrayList<String> invalidIDsPt2 = new ArrayList<>();
@@ -74,7 +72,7 @@ public class DayTwo {
 
     }
 
-    public static String[] splitNumbersByComma(Path path) {
+    private static String[] splitNumbersByComma(Path path) {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             String[] parsedLines = new String[0];
@@ -84,7 +82,7 @@ public class DayTwo {
             }
             return parsedLines;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return null;
         }
     }
