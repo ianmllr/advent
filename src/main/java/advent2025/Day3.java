@@ -1,18 +1,14 @@
 package advent2025;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Day3 {
     public static void main() {
         Path path = Path.of(("src/main/resources/2025/day3input.txt"));
-        String[] numbers = splitNumbersBy(path, " ");
+        String[] numbers = Day2.splitNumbersBy(path, " ");
         int totalJolts = 0;
         long totalJoltsLong = 0;
         int maxJolts;
@@ -31,7 +27,6 @@ public class Day3 {
             totalJoltsLong += maxJoltsPt2;
         }
         System.out.println("Total jolts (pt 2): " + totalJoltsLong);
-
     }
 
     private static int getPt1Jolts(String numbers) {
@@ -70,21 +65,6 @@ public class Day3 {
             startPointer = maxDigitPointer + 1;
         }
         return Long.parseLong(new String(result));
-    }
-
-    public static String[] splitNumbersBy(Path path, String regex) {
-        List<String> allParts = new ArrayList<>();
-        try (BufferedReader br = Files.newBufferedReader(path)) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(regex);
-                allParts.addAll(Arrays.asList(parts));
-            }
-            return allParts.toArray(new String[0]);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
     }
 }
 
