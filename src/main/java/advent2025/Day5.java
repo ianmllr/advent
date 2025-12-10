@@ -18,12 +18,18 @@ public class Day5 {
 
         assert freshRanges != null;
 
+        // part 1
         // Set because no duplicate counting
         Set<Long> freshIngredients = getFreshIngredients(freshRanges, ingredientIDs);
+        System.out.println(freshIngredients.size() + " ingredients are fresh");
 
-        System.out.println(freshIngredients.size() + " ingredients are fresh.");
+        // part 2 (NOT DONE)
+        long totalFreshIDs = countAllFreshIDsInRange(freshRanges);
+        System.out.println(totalFreshIDs + " total fresh ingredient IDs");
+
     }
 
+    // part 1
     private static Set<Long> getFreshIngredients(String[] freshRanges, String[] ingredientIDs) {
         Set<Long> freshIngredients = new HashSet<>();
 
@@ -39,10 +45,27 @@ public class Day5 {
                     freshIngredients.add(ingredientID);
                 }
             }
-
-
         }
+
         return freshIngredients;
+    }
+
+    // part 2
+    private static long countAllFreshIDsInRange(String[] freshRanges) {
+        Set<Long> freshIngredients = new HashSet<>();
+        long totalFreshIngredientIDs;
+        long highestEndRange = 0;
+
+        for (String freshRange : freshRanges) {
+            String[] rangeParts = freshRange.split("-");
+            long startRange = Long.parseLong(rangeParts[0]);
+            long endRange = Long.parseLong(rangeParts[1]);
+            if (endRange > highestEndRange) highestEndRange = endRange;
+            freshIngredients.add(endRange - startRange + 1);
+        }
+        totalFreshIngredientIDs = freshIngredients.stream().mapToLong(Long::longValue).sum();
+
+        return totalFreshIngredientIDs;
     }
 
     public static String[] readLines(Path path) {

@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Day2 {
     public static void main() {
         Path path = Path.of(("src/main/resources/2025/day2input.txt"));
-        String[] providedNumbers = splitNumbersBy(path, ",");
+        String[] providedNumbers = readAndSplitBy(path, ",");
         ArrayList<String> invalidIDs = new ArrayList<>();
         ArrayList<String> invalidIDsPt2 = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class Day2 {
 
     }
 
-    public static String[] splitNumbersBy(Path path, String regex) {
+    public static String[] readAndSplitBy(Path path, String regex) {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             String[] parsedLines = new String[0];

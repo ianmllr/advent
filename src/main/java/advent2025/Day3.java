@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Day3 {
     public static void main() {
         Path path = Path.of(("src/main/resources/2025/day3input.txt"));
-        String[] numbers = Day2.splitNumbersBy(path, " ");
+        String[] numbers = Day2.readAndSplitBy(path, " ");
         int totalJolts = 0;
         long totalJoltsLong = 0;
         int maxJolts;
